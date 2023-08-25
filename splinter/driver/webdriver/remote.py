@@ -37,14 +37,6 @@ class WebDriver(BaseWebDriver):
         if browser_name == "INTERNET EXPLORER":
             browser_name = "INTERNETEXPLORER"
 
-        # If no desired capabilities specified, add default ones
-        caps = getattr(DesiredCapabilities, browser_name, {})
-        if kwargs.get("desired_capabilities"):
-            # Combine user's desired capabilities with default
-            caps.update(kwargs["desired_capabilities"])
-
-        kwargs["desired_capabilities"] = caps
-
         kwargs["command_executor"] = command_executor
 
         self.config = config or Config()
